@@ -1,1 +1,5 @@
-d
+plotly
+matplotlib
+numpy
+pandas
+
