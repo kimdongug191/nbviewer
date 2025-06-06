@@ -48,7 +48,7 @@ with st.echo():
    url1 ='https://github.com/kimdongug191/nbviewer/blob/main/gg.xlsx'
          
          
-   df = df1 = pd.read_excel(url, engine='openpyxl')
+   df = df1 = pd.read_excel(url1, engine='openpyxl')
    df1 = df1.dropna() # 결측치를 드랍하고
    df1= df1.reset_index() # 리셋 인덱스 없이 concat하면 오류 발생 
    df1 = df1.drop('index', axis=1)
