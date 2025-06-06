@@ -39,19 +39,33 @@ st.write(''' #### 변수 설정
 
 
 st.write('### 데이터 전처리 : 데이터 생성')
+import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from io import BytesIO
+import requests
+
+st.write('### 데이터 전처리 : 데이터 생성')
 
 with st.echo():
-   # 이블록의 코드와 결과를 출력
-   url1 ='https://github.com/kimdongug191/nbviewer/blob/main/gg.xlsx'
-         
-         
-   df = df1 = pd.read_excel(url1, engine='openpyxl')
-   df1 = df1.dropna() # 결측치를 드랍하고
-   df1= df1.reset_index() # 리셋 인덱스 없이 concat하면 오류 발생 
-   df1 = df1.drop('index', axis=1)
+    # ✅ GitHub에서 엑셀 파일을 불러오기 위한 **Raw URL** 사용
+    url1 = 'https://raw.githubusercontent.com/kimdongug191/nbviewer/main/gg.xlsx'
+    
+    # ✅ GitHub에서 파일을 가져와서 BytesIO로 변환 후 읽기
+    response = requests.get(url1)
+    file_bytes = BytesIO(response.content)
+
+    # ✅ pandas를 사용해 엑셀 파일 읽기
+    df1 = pd.read_excel(file_bytes, engine='openpyxl')
+
+    # ✅ 데이터 전처리
+    df1 = df1.dropna()  # 결측치 제거
+    df1 = df1.reset_index(drop=True)  # 인덱스 리셋 (불필요한 index 제거)
+
+    # ✅ Streamlit에서 데이터 출력
+    st.write("📊 전처리된 데이터 미리보기")
+    st.dataframe(df1.head())
 
     # 분기별 데이터 생성
    quarters = pd.date_range(start= '1997Q1', end ='2020Q1', freq='QE')
