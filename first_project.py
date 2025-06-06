@@ -46,7 +46,6 @@ import matplotlib.pyplot as plt
 from io import BytesIO
 import requests
 
-st.write('### 데이터 전처리 : 데이터 생성')
 
 with st.echo():
     # ✅ GitHub에서 엑셀 파일을 불러오기 위한 **Raw URL** 사용
@@ -68,14 +67,14 @@ with st.echo():
     st.dataframe(df1.head())
 
     # 분기별 데이터 생성
-   quarters = pd.date_range(start= '1997Q1', end ='2020Q1', freq='QE')
-   df2 = pd.DataFrame({
-    "Date": quarters,  # 날짜 데이터
-    "Quarter": [f"{y}Q{q}" for y, q in zip(quarters.year, quarters.quarter)]})
+    quarters = pd.date_range(start= '1997Q1', end ='2020Q1', freq='QE')
+    df2 = pd.DataFrame({
+     "Date": quarters,  # 날짜 데이터
+     "Quarter": [f"{y}Q{q}" for y, q in zip(quarters.year, quarters.quarter)]})
 
-   df = pd.concat([df1, df2], axis=1, join='inner')    
-   df
-   df.head() # 사용하면 streamlit 에는 프린트가 안되고 터미널에 출력됨
+    df = pd.concat([df1, df2], axis=1, join='inner')    
+    df
+    df.head() # 사용하면 streamlit 에는 프린트가 안되고 터미널에 출력됨
 
 
 st.write('### 데이터 전처리 : 시각화 및 단위근 검정')
