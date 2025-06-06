@@ -34,8 +34,7 @@ st.write(''' #### 변수 설정
             3. 분석 실행 : VAR 검정 
             4. 분석 해석 
          ''')
-# st.image('C:\\Users\\82102\\OneDrive\\바탕 화면\\kor1_99-2.jpg', 
-#          caption= 'GDP는 계속 증가하지만 최근에는 주춤하는 추세' ,width=350)
+
 
 
 
