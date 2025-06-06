@@ -34,8 +34,8 @@ st.write(''' #### 변수 설정
             3. 분석 실행 : VAR 검정 
             4. 분석 해석 
          ''')
-st.image('C:\\Users\\82102\\OneDrive\\바탕 화면\\kor1_99-2.jpg', 
-         caption= 'GDP는 계속 증가하지만 최근에는 주춤하는 추세' ,width=350)
+# st.image('C:\\Users\\82102\\OneDrive\\바탕 화면\\kor1_99-2.jpg', 
+#          caption= 'GDP는 계속 증가하지만 최근에는 주춤하는 추세' ,width=350)
 
 
 
@@ -46,7 +46,10 @@ import matplotlib.pyplot as plt
 
 with st.echo():
    # 이블록의 코드와 결과를 출력
-   df = df1 = pd.read_excel("C:\\Users\\82102\\Downloads\\gg.xlsx", engine='openpyxl')
+   url1 ='https://github.com/kimdongug191/nbviewer/blob/main/gg.xlsx'
+         
+         
+   df = df1 = pd.read_excel(url, engine='openpyxl')
    df1 = df1.dropna() # 결측치를 드랍하고
    df1= df1.reset_index() # 리셋 인덱스 없이 concat하면 오류 발생 
    df1 = df1.drop('index', axis=1)
